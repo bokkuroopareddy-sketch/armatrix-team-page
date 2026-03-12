@@ -15,14 +15,14 @@ export default function TeamPage() {
   const [linkedin, setLinkedin] = useState("")
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/team")
+    fetch("https://armatrix-backend-2r9a.onrender.com/team")
       .then(res => res.json())
       .then(data => setTeam(data))
   }, [])
 
   const addMember = async () => {
 
-    await fetch("http://127.0.0.1:8000/team",{
+    await fetch("https://armatrix-backend-2r9a.onrender.com/team",{
       method:"POST",
       headers:{
         "Content-Type":"application/json"
@@ -41,7 +41,7 @@ export default function TeamPage() {
 
   const deleteMember = async (id:number) => {
 
-    await fetch(`http://127.0.0.1:8000/team/${id}`,{
+    await fetch(`https://armatrix-backend-2r9a.onrender.com/team/${id}`,{
       method:"DELETE"
     })
 
@@ -70,7 +70,6 @@ Engineers, designers and innovators building the future of robotics and automati
 </p>
 
 </div>
-
 
 {/* ADD MEMBER FORM */}
 
@@ -125,7 +124,6 @@ Add Member
 
 </div>
 
-
 {/* TEAM GRID */}
 
 <motion.div
@@ -133,9 +131,7 @@ initial="hidden"
 animate="visible"
 variants={{
 hidden:{},
-visible:{
-transition:{staggerChildren:0.15}
-}
+visible:{transition:{staggerChildren:0.15}}
 }}
 className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10"
 >
@@ -149,48 +145,30 @@ hidden:{opacity:0,y:40},
 visible:{opacity:1,y:0}
 }}
 whileHover={{scale:1.05,y:-10}}
-whileTap={{scale:0.97}}
 transition={{duration:0.4}}
 className="relative bg-white/5 backdrop-blur-xl border border-white/10 
 rounded-2xl p-6 text-center overflow-hidden group 
 hover:border-blue-400/60 transition"
 >
 
-{/* Glow Hover Effect */}
-
 <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition duration-500"></div>
-
-
-{/* Profile Image */}
 
 <img
 src={member.photo_url}
 className="relative w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-blue-400/30"
 />
 
-
-{/* Name */}
-
 <h2 className="relative text-xl font-semibold">
 {member.name}
 </h2>
-
-
-{/* Role */}
 
 <p className="relative text-blue-400 font-medium">
 {member.role}
 </p>
 
-
-{/* Bio */}
-
 <p className="relative text-gray-400 text-sm mt-2">
 {member.bio}
 </p>
-
-
-{/* LinkedIn */}
 
 <a
 href={member.linkedin}
@@ -199,9 +177,6 @@ className="relative flex justify-center mt-4 text-blue-400 hover:text-blue-300"
 >
 <FaLinkedin size={22}/>
 </a>
-
-
-{/* Delete */}
 
 <button
 onClick={()=>deleteMember(member.id)}
