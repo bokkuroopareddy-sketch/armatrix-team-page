@@ -44,6 +44,7 @@ The project is built using a **full-stack architecture** with a modern frontend 
 ### Frontend
 
 https://armatrix-team-page.vercel.app
+https://armatrix-team-page-q2fn-a4eaabtvv.vercel.app/
 
 ### Backend API
 
